@@ -1,6 +1,8 @@
 # Grocery Shop Demo Web Application
 
 ![Screenshot From The Products Page](./screenshots/products.png)
+![Search and Filter Sidebar](./screenshots/SearchAndFilter.png)
+
 
 This repository contains a demo web application for a grocery shop developed using Django. You can deploy this application by forking the repo and deploying it on your preferred cloud service, such as Heroku or Render.com.
 
