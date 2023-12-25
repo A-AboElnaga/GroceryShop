@@ -1,0 +1,92 @@
+{% extends 'dashboard/base.html' %}
+
+{% comment %} This whole file is additional
+{% endcomment %}
+
+{% block dashcontent %}
+    {% if not request.user.is_authenticated %}
+
+        <div class="welcome-section">
+            <h1>Welcome to our online store</h1>
+            <p>Please <a href="{% url 'account_login' %}">login</a> or <a href="{% url 'account_signup' %}">signup</a> to continue to our storefront.</p>
+        </div>
+    {% else %}
+    <div class="user-info">
+        <h2> Welcome to our online store </h2>
+        <h4> Username: {{ request.user.username }} </h4>
+        <h4> Email: {{ request.user.email }} </h4>
+    </div>
+    
+    <div class="order-list">
+        <h2> Previous Orders </h2>
+        {% comment %} 
+        
+        order_status = ((0, "Fullfield"), (1, "Unfullfield"), (2, "Canceled"), (3, "Refunded"))
+
+        {% endcomment %}
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Total Price</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+            {% comment %} <div class="order-container">
+                <a href="{% url 'order:detail_order' pk=order.pk %}"> 
+
+                    <p>{{ order.created }} | 
+                        {% if order.status == 0  %}
+                            delivered
+                        {% elif order.status == 1 %}
+                            not delivered
+                        {% elif order.status == 2 %}
+                            Canceled
+                        {% elif order.status == 3 %}
+                            Refunded
+                        {% else%}
+                            unknow status
+                        {% endif %}    
+                    
+                    
+                    |  total price: {{ order.total }}$</p>
+                </a>
+            </div> {% endcomment %}
+                
+                    <tr>
+                        <th scope="row">
+                            <a style="text-decoration:none;" href="{% url 'order:detail_order' pk=order.pk %}"> Order #{{ forloop.revcounter }}</a>
+                        </th>
+                        <td>
+                            {{ order.created }}
+                        </td>
+                        <td>
+                                {% if order.status == 0  %}
+                                delivered
+                                {% elif order.status == 1 %}
+                                    not delivered
+                                {% elif order.status == 2 %}
+                                    Canceled
+                                {% elif order.status == 3 %}
+                                    Refunded
+                                {% else%}
+                                    unknow status
+                                {% endif %}    
+                        </td>
+                        <td>
+                            {{ order.total }}
+                        </td>
+                    </tr>
+                </a>
+            {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+    <hl>
+    {% endif %}
+    
+{% endblock %}

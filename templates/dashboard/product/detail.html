@@ -1,0 +1,23 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+    <ul>
+        <li>
+            <a href="">Categories</a>
+        </li>
+        {% for var in path %}
+            <li>
+                <a href="{% url 'dashboard:category_dashboard:category_detail' pk=var.pk %}">{{ var.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% for cat in categories %}
+        <div>
+            <a href="{% url 'dashboard:category_dashboard:category_detail' pk=cat.pk %}"> {{ cat.name }} </p>
+            <a href="{% url 'dashboard:category_dashboard:category_update' pk=cat.pk %}"> update </a>
+            <a href=""> delete </a>
+        </div>
+        
+    {% endfor %}
+{% endblock %}

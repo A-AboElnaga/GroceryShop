@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+                {% for foo in object.orderlines.all %} 
+                        <tr>
+                        {% comment %} <td> {{ foo }} </td> {% endcomment %}
+                        <td>{{ foo.product }} [{{ foo.sku }}]</td>
+                        <td>{{ foo.product_price }}</td>
+                        <td>{{ foo.quantity }}</td>
+                        <td>{{ foo.get_sub_total }}</td>
+                    {% empty %}
+                        <h1>empty</h1>
+                    </tr>
+                {% endfor %}
+                <tr>
+                <td>Total</td>
+                <td></td>
+                <td></td>
+                <td>{{ object.total }}</td>
+                </tr>
+            </table>
+        </div> 
+    </div> 
+{% endblock  %}
+

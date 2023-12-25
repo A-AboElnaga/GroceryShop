@@ -1,0 +1,459 @@
+/* Styles for the navigation bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Style for individual links */
+.navbar a {
+    text-decoration: none;
+    margin-right: 10px;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+/* Style for primary button */
+.btn-outline-primary {
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+/* Style for secondary buttons */
+.btn-outline-secondary {
+    color: #6c757d;
+    border: 1px solid #6c757d;
+}
+
+/* Style for success button */
+.btn-outline-success {
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+/* Style for danger button */
+.btn-danger {
+    color: #f9f7f7;
+    border: 1px solid #dc3545;
+}
+
+
+.object-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.object-item {
+    width: 45%; /* Adjust as needed */
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    border: 3px double #c8c8c8;
+    text-decoration: none;
+    color: #2d2727;
+}
+
+.object-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+}
+
+
+/* Styling for the form container */
+.form-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style for form labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Style for form inputs */
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style for submit button */
+input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Style for the form section headers */
+.form-section-header {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+
+/* Style for the image inside each item */
+.object-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Style for the name and price */
+.object-item h5 {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+/* Style for the delete button */
+.delete-modal {
+    margin-top: 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Style for the delete button on hover */
+.delete-modal:hover {
+    background-color: #c82333;
+}
+/* Style for the Create Product link */
+.create-product-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #dde4eb;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Hover effect for the Create Product link */
+.create-product-link:hover {
+    background-color: #00b300;
+    color: #ffffff;
+}
+
+/* Styles for the welcome section */
+.welcome-section {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.welcome-section h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.welcome-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Styles for user info */
+.user-info {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.user-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.user-info div {
+    margin-bottom: 20px;
+}
+
+/* Styles for order list */
+.order-list p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Styles for brand items */
+.brand-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.brand-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Styles for the modal */
+.modal-content {
+    border-radius: 8px;
+}
+
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Style for delete button in modal */
+#delete-button {
+    margin-left: 5px;
+}
+
+
+/* Centering the 'Create Brand' button */
+.create-brand-btn {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000;
+    background-color: #c8c8c8;
+}
+.create-brand-btn:hover {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000;
+    background-color: #c8c8c8;
+}
+/* Styling for each brand item */
+.brand-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.brand-item p {
+    margin-bottom: 10px;
+}
+
+.brand-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Assuming this is your custom CSS file or style block */
+
+/* Style the Create Category link */
+a[href*="category_create"] {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  a[href*="category_create"]:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Style the Delete and Update buttons */
+  .btn-primary {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-danger {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  
+  /* Style the modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 10px;
+  }
+  
+  .modal-header h1 {
+    font-size: 1.5em;
+    margin: 0;
+  }
+  
+  .modal-body {
+    padding: 10px 0;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+  }
+  /* Style for the category item container */
+.category-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Style for the category link */
+  .category-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .category-link:hover {
+    text-decoration: underline;
+  }
+  /* Styling for the container */
+/* Styling for the blotted list */
+.blotted-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.blotted-list li {
+margin: 5px;
+padding: 10px;
+border: 2px double transparent;
+border-radius: 10px;
+background-color: #f5f5f5;
+display: inline-block;
+transition: all 0.3s ease;
+}
+
+/* Colors and borders on hover */
+.blotted-list li:hover {
+border-color: #ffcc00; /* Change border color on hover */
+background-color: #ffffff;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+/* Different colors for each list item */
+.blotted-list li:nth-child(odd) {
+background-color: #b3e0ff;
+}
+
+.blotted-list li:nth-child(even) {
+background-color: #ffd9b3;
+}
+
+#carouselExampleIndicators {
+    max-width: 300px; /* Set the maximum width of the carousel */
+    margin: auto; /* Center the carousel */
+}
+
+#carouselExampleIndicators .carousel-item img {
+    max-width: 100%; /* Make the images responsive within the carousel */
+    height: auto; /* Maintain the aspect ratio of the images */
+}
+
+.custom-heading {
+    font-family: Georgia, sans-serif; /* Replace 'Your Chosen Font' with your desired font */
+    font-size: 36px; /* Adjust the font size as needed */
+    color: #333; /* Change the font color */
+    /* Add more styles as desired */
+}
+.container {
+    width: 82%;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    border-color: #007bff;
+    box-shadow: 0px 0px 10px rgba(0, 27, 228, 0.11);
+  }
+
+/* .order-container {
+    background-color: #f7f7f7;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.order-container a {
+    text-decoration: none;
+    color: #333;
+}
+
+.order-container p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: Arial, sans-serif;
+} */
+.table a {
+    display:block;
+    text-decoration:none;
+}

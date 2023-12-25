@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for foo in object_list %}
+        <div>
+            <a href="{% url 'order:detail_order' pk=object.pk %}">
+                {{ foo.email }} | {{ foo.total }}$
+            </a>
+        </div>
+    {% endfor %}
+{% endblock  %}
+

@@ -1,0 +1,89 @@
+{% extends 'dashboard/base.html' %}
+{% load page_tag %}
+
+
+{% block search %}
+  <a class="btn btn-outline-secondary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+    Search
+  </a>
+{% endblock %}
+
+{% block dashcontent %}
+    
+    
+    <div class="pagination">
+      {% if is_paginated %}  
+          {% if page_obj.has_previous %}
+              <a class="btn btn-outline-dark" href="?{% query_tag page=page_obj.previous_page_number %}"><b>Previous</b></a>
+          {% endif %}
+          <span>
+              <b>Page: {{ page_obj.number }} out of {{ page_obj.paginator.num_pages }}</b> 
+          </span>
+          {% if page_obj.has_next %}
+              <a class="btn btn-outline-dark" href="?{% query_tag page=page_obj.next_page_number %}"><b>Next</b></a>
+          {% endif %}
+      {% endif %}
+    </div>
+    {% if request.user.is_staff or request.user.is_superuser %}
+      <div class="object-list">
+      <button class="create-product-link" href="{% url 'dashboard:product_dashboard:product_create' %}"> 
+        Create Product 
+      </button>
+      <div>
+    {% endif %}
+
+    <div class="row row-cols-1 row-cols-md-4 g-1">
+      {% for object in object_list %} 
+        <div class="col">
+        <div class="card" style="width:18rem;">
+        <div class="btn btn-outline-success">
+          <a style="text-decoration:none" class="card-body" href="{% url 'products:detail_product' slug=object.slug%}">
+            <p class="text-center">
+              <img class="card-img-top" src="{{ object.get_thumbnail.image_url }}" alt="{{ object.get_thumbnail.alt }}">
+            </p>
+          <h5>{{ object.name }}</h5>
+          <h5>EGP {{ object.price }}</h5>
+          </a>
+          {% if request.user.is_staff or request.user.is_superuser %}
+            <button class="btn btn-outline-danger" data-delete-url="{% url 'dashboard:product_dashboard:delete_product' pk=object.pk %}" type="button" class="btn btn-primary delete-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Delete Product
+            </button>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+      {% endfor %}
+    </div>
+  <div class="pagination">
+    {% if is_paginated %}  
+        {% if page_obj.has_previous %}
+            <a class="btn btn-outline-dark" href="?{% query_tag page=page_obj.previous_page_number %}"><b>Previous</b></a>
+        {% endif %}
+        <span>
+            <b>Page: {{ page_obj.number }} out of {{ page_obj.paginator.num_pages }}</b> 
+        </span>
+        {% if page_obj.has_next %}
+            <a class="btn btn-outline-dark" href="?{% query_tag page=page_obj.next_page_number %}"><b>Next</b></a>
+        {% endif %}
+    {% endif %}
+</div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Image</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete this product ? 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <a id="delete-button" href="" class="btn btn-danger">Delete</a>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}
+
+ 

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="pagination">
+        {% if is_paginated %}  
+            {% if page_obj.has_previous %}
+                <a class="btn btn-outline-dark" href="?page={{ page_obj.previous_page_number }}"><b>Previous</b></a>
+            {% endif %}
+            <span>
+                <b>Page: {{ page_obj.number }} out of {{ page_obj.paginator.num_pages }}</b> 
+            </span>
+            {% if page_obj.has_next %}
+                <a class="btn btn-outline-dark" href="?page={{ page_obj.next_page_number }}"><b>Next</b></a>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-4 g-1">
+        {% for object in object_list %}
+        <div class="col">
+        <div class="card" style="width:18rem;">
+            <div class="btn btn-outline-success">
+            <a style="text-decoration:none" class="card-body" href="{% url 'products:detail_product' slug=object.slug%}">
+                <p class="text-center">
+                <img class="card-img-top" src="{{ object.get_thumbnail.image_url }}" alt="{{ object.get_thumbnail.alt }}">
+                </p>
+                <h5>{{ object.name }}</h5>
+                <h5>EGP {{ object.price }}</h5>
+            </a>
+            </div>
+        </div>
+    </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        {% if is_paginated %}  
+            {% if page_obj.has_previous %}
+                <a class="btn btn-outline-dark" href="?page={{ page_obj.previous_page_number }}"><b>Previous</b></a>
+            {% endif %}
+            <span>
+                <b>Page: {{ page_obj.number }} out of {{ page_obj.paginator.num_pages }}</b> 
+            </span>
+            {% if page_obj.has_next %}
+                <a class="btn btn-outline-dark" href="?page={{ page_obj.next_page_number }}"><b>Next</b></a>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

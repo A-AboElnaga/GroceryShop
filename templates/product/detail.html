@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="custom-heading"> {{ object.name }}</h1>
+    
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            {% for image in object.productimage_set.all %}
+                <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+                    <img src="{{ image.image_url }}" class="d-block w-100" alt="{{ image.alt }}">
+                </div>
+            {% endfor %}
+            {% comment %} <div class="carousel-item">
+                <img src="https://images-eu.ssl-images-amazon.com/images/I/71oyM0epm4L._AC_UL600_SR600,400_.jpg" class="d-block w-100" alt="bla">
+            </div> {% endcomment %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="container">
+        <ul class="list-group">
+            <li class="list-group-item">Price: {{ object.price }}</li>
+            <li class="list-group-item">Weight: {{ object.weight }}</li>
+            <li class="list-group-item">
+                Brand: <a href="{% url "products:list_product_brand" slug=object.brand.slug %}">{{ object.brand }}</a>
+            </li>
+            <li class="list-group-item">SKU: {{ object.sku }}</li>
+            <li class="list-group-item">Description: {{ object.description }}</li>
+          </ul>
+    
+        <form action = "{% url 'products:add_product_to_checkout' pk=object.pk %}" method = "post" class="form-container">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class = "btn btn-outline-success">Add To Cart</button>
+        </form>
+
+        <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Count of users who bought this item:
+            <span class="badge bg-primary rounded-pill">{{ users_total }}</span></li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">Count of users who bought this item in the last 24 hours: <span class="badge bg-primary rounded-pill">{{ users_last_24 }}</span></li>
+        </ul>
+    </div>
+    
+{% endblock %}

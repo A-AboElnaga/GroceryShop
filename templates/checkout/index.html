@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% if checkout_line %}
+                {% for line in checkout_line %}
+                    <div class="col-md-12">
+                        <p>{{ line }} [{{ line.product.sku }}]</p>
+                        
+                        <p>{{ line.quantity  }} x {{ line.product.price }}$</p>
+
+                        <p>subtotal: {{ line.get_sub_total }}</p>
+                        
+                        <a class="btn btn-outline-danger" href="{% url 'checkout:delete_item' pk=line.pk  %}">Delete Item</a>
+
+
+                        <hr> 
+                    </div>
+                {% endfor %}
+                <p>total: {{ total }}</p>
+
+                <a class="btn btn-primary" href="{% url 'checkout:checkout_create_address' %}">Next</a>
+                <p></p>
+                <a class="btn btn-primary" href="{% url 'dashboard:product_dashboard:product_list' %}">Back to products</a>
+
+            {% else %}
+                <h1>Please add some products to your shopping cart.<h1>
+                <h1>Place some orders!</h1>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

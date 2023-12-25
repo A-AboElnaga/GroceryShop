@@ -1,0 +1,75 @@
+{% extends "dashboard/base.html" %}
+
+{% block static %}
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css" type="text/css" />
+{% endblock%}
+
+{% block dashcontent %}
+    {% if request.user.issuperuser or request.user.isstaff %}
+        <form method="post" class = 'dropzone' id = "my-awesome-dropzone" enctype="multipart/form-data" action="{% url 'dashboard:product_dashboard:create_image' pk=product_id %}">
+            {% csrf_token %}
+            <div class = "fallback">
+                {{ form }}
+            </div>
+        </form>
+    {% endif %}
+    <div id = "productimages">
+        <div class="row">
+            {% for object in object_list %}
+                <div class = "col-md-4">        
+                    <img src="{{ object.image_url }}" alt="{{ object.alt }}">
+                    {% if request.user.issuperuser or request.user.isstaff %}
+                        <button data-delete-url="{% url 'dashboard:product_dashboard:delete_image' pk=object.pk %}" type="button" class="btn btn-primary delete-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Delete Image
+                        </button>
+                    {% endif %}
+                      
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Image</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete this image ? 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <a id="delete-button" href="" class="btn btn-danger">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+{% endblock %}
+
+{% block js %}
+<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+<script>
+    
+    Dropzone.autoDiscover = false;
+    $(function() {
+        let myDropzone = new Dropzone(".dropzone",{
+            paramName: "image",
+            success : function(file,response){
+                this.removeFile(file);
+                $('#productimages .row').append("<div class=\"col-md-4\">\n" +
+                    "                            <img src="+ response.url+" alt="+response.alt+">\n"+
+                    "                            <button data-delete-url="+response.delete_url+" type=\"button\" class=\"btn btn-primary delete-modal\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">"+
+                    "                            Delete\n"+
+                    "                            </button>\n"+
+                    "                            </div>"    )
+            }
+        });
+         
+    })
+
+</script>
+{% endblock %}
