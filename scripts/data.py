@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 # name - Brand - Price - image_url
 def run():
     try:
-        User.objects.create_superuser(username='PeterFayez', password='f3b4a44410a4d783b4cfa65c69a41a57', email='PeterFayez@example.com')
+        User.objects.create_superuser(username='Peter', password='f3b4a44410a4d783b4cfa65c69a41a57', email='Peter@example.com')
     except:
         x = 1 
     Category.objects.all().delete()
