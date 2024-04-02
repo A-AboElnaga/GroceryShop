@@ -6,7 +6,7 @@ charset-normalizer==3.3.2
 cryptography==42.0.4
 defusedxml==0.7.1
 dj-database-url==2.1.0
-Django==4.2.8
+Django==4.2.11
 django-allauth==0.58.2
 django-countries==7.5.1
 django-credit-cards==0.4.1
